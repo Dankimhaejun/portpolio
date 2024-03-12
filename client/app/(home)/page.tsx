@@ -2,7 +2,7 @@ export const metadata = {
   title: 'Home',
 };
 
-export default function Page() {
+export default function Home() {
   return (
     <div>
       <h1>Hello!</h1>
