@@ -1,11 +1,21 @@
+import Link from 'next/link';
+import { Movie } from './[id]/page';
+
 export const metadata = {
   title: 'Movies',
 };
 
-const MOVIES_URL = 'https://nomad-movies.nomadcoders.workers.dev/movies';
+export const MOVIES_URL = 'https://nomad-movies.nomadcoders.workers.dev/movies';
 
 export default async function Page() {
-  await new Promise((resolve) => setTimeout(resolve, 5000));
-  const movies = await fetch(MOVIES_URL).then((res) => res.json());
-  return <h1>{JSON.stringify(movies)}</h1>;
+  const movies: Movie[] = await fetch(MOVIES_URL).then((res) => res.json());
+  return (
+    <div>
+      {movies.map((movie) => (
+        <li key={movie.id}>
+          <Link href={`/movies/${movie.id}`}>{movie.title}</Link>
+        </li>
+      ))}
+    </div>
+  );
 }

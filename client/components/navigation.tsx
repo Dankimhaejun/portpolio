@@ -8,9 +8,6 @@ export default function Navigation() {
   const path = usePathname();
   const [count, setCount] = useState(0);
 
-
-
-  
   return (
     <nav>
       <ul>
@@ -19,6 +16,9 @@ export default function Navigation() {
         </li>
         <li>
           <Link href="/about-us">About Us</Link> {path === '/about-us' ? '✅' : ''}
+        </li>
+        <li>
+          <Link href="/movies">Movies</Link> {path === '/movies' ? '✅' : ''}
         </li>
         <li>
           <button onClick={() => setCount((p) => p + 1)}>count: {count}</button>
