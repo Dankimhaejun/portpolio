@@ -18,7 +18,7 @@ export default function Navigation() {
           <Link href="/about-us">About Us</Link> {path === '/about-us' ? '✅' : ''}
         </li>
         <li>
-          <Link href="/movies">Movies</Link> {path === '/movies' ? '✅' : ''}
+          <Link href="/movies">Movies</Link> {path.includes('/movies') ? '✅' : ''}
         </li>
         <li>
           <button onClick={() => setCount((p) => p + 1)}>count: {count}</button>
