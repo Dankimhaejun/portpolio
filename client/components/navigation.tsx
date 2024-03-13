@@ -1,12 +1,10 @@
-'use client';
-
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { headers } from 'next/headers';
+
 
 export default function Navigation() {
-  const path = usePathname();
-  const [count, setCount] = useState(0);
+  const headersList = headers();
+  const path = headersList.get('x-pathname') || '';
 
   return (
     <nav>
