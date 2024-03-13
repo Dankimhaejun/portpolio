@@ -1,4 +1,4 @@
-import { MOVIES_URL } from '../movies/page';
+import { MOVIES_URL } from '../common/constants';
 
 export interface Video {
   iso_639_1: string;

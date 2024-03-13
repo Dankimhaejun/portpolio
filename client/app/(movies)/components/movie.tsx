@@ -1,4 +1,4 @@
-import { MOVIES_URL } from '../movies/page';
+import { MOVIES_URL } from '../common/constants';
 
 export interface Movie {
   adult: boolean;
