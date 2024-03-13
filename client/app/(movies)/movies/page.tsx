@@ -1,21 +1,19 @@
-import Link from 'next/link';
-import { Movie } from '../components/movie';
+import Movie, { Movie as IMovie } from '../components/movie';
 import { MOVIES_URL } from '../common/constants';
+import styles from '../styles/movies.module.css';
 
 export const metadata = {
   title: 'Movies',
 };
 
 export default async function Page() {
-  const movies: Movie[] = await fetch(MOVIES_URL).then((res) => res.json());
+  const movies: IMovie[] = await fetch(MOVIES_URL).then((res) => res.json());
 
   return (
-    <>
-      {movies.map((movie) => (
-        <li key={movie.id}>
-          <Link href={`/movies/${movie.id}`}>{movie.title}</Link>
-        </li>
+    <div className={styles.wrapper}>
+      {movies.map(({ id, poster_path, title }) => (
+        <Movie id={id} key={id} poster_path={poster_path} title={title} />
       ))}
-    </>
+    </div>
   );
 }

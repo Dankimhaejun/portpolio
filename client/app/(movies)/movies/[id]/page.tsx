@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import Movie from '../../components/movie';
+import MovieDetail from '../../components/movie-detail';
 import Videos from '../../components/videos';
 import { Metadata } from 'next';
 
@@ -16,7 +16,7 @@ export default function Page({ params: { id } }: PageProps) {
     <>
       <h1>Movie Page</h1>
       <Suspense fallback={<h3>Loading Movie...</h3>}>
-        <Movie id={id} />
+        <MovieDetail id={id} />
       </Suspense>
       <Suspense fallback={<h3>Loading Videos...</h3>}>
         <Videos id={id} />

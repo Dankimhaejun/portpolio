@@ -1,4 +1,9 @@
-import { MOVIES_URL } from '../common/constants';
+'use client';
+
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+
+import styles from '../styles/movie.module.css';
 
 export interface Movie {
   adult: boolean;
@@ -18,18 +23,21 @@ export interface Movie {
 }
 
 interface MovieProps {
-  id: string;
+  id: number;
+  poster_path: string;
+  title: string;
 }
 
-const getMovie = async (id: string): Promise<Movie> =>
-  fetch(`${MOVIES_URL}/${id}`).then((res) => res.json());
-
-export default async function Movie({ id }: MovieProps) {
-  const movie = await getMovie(id);
+export default async function Movie({ id, poster_path, title }: MovieProps) {
+  const router = useRouter();
+  function handleClick(id: number) {
+    router.push(`/movies/${id}`);
+  }
 
   return (
-    <>
-      <h1>{movie.title}</h1>
-    </>
+    <div key={id} className={styles.movie}>
+      <img src={poster_path} alt={title} onClick={() => handleClick(id)} />
+      <Link href={`movies/${id}`}>{title}</Link>
+    </div>
   );
 }
