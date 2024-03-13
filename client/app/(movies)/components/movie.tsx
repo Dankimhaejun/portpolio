@@ -37,7 +37,9 @@ export default async function Movie({ id, poster_path, title }: MovieProps) {
   return (
     <div key={id} className={styles.movie}>
       <img src={poster_path} alt={title} onClick={() => handleClick(id)} />
-      <Link href={`movies/${id}`}>{title}</Link>
+      <Link prefetch href={`movies/${id}`}>
+        {title}
+      </Link>
     </div>
   );
 }
