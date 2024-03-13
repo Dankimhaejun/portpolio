@@ -1,4 +1,5 @@
 import { MOVIES_URL } from '../common/constants';
+import styles from '../styles/videos.module.css';
 
 export interface Video {
   iso_639_1: string;
@@ -23,5 +24,17 @@ const getVideos = async (id: string): Promise<Video[]> =>
 export default async function Videos({ id }: VideosProps) {
   const videos = await getVideos(id);
 
-  return <h2>{JSON.stringify(videos)}</h2>;
+  return (
+    <div className={styles.wrapper}>
+      {videos.map((video) => (
+        <iframe
+          key={video.id}
+          src={`https://youtube.com/embed/${video.key}`}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title={video.name}
+        />
+      ))}
+    </div>
+  );
 }

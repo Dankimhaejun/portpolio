@@ -14,7 +14,6 @@ interface PageProps {
 export default function Page({ params: { id } }: PageProps) {
   return (
     <>
-      <h1>Movie Page</h1>
       <Suspense fallback={<h3>Loading Movie...</h3>}>
         <MovieDetail id={id} />
       </Suspense>
